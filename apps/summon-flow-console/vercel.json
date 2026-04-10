@@ -1,0 +1,4 @@
+{
+  "installCommand": "bun install --cwd ../..",
+  "framework": "nextjs"
+}
