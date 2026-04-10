@@ -30,6 +30,18 @@ export const metadata: Metadata = {
     type: "website",
     url: siteUrl,
   },
+  keywords: [
+    "realtime",
+    "websocket",
+    "channels",
+    "presence",
+    "Pusher alternative",
+    "self-hosted realtime",
+    "event streaming",
+    "WebSocket server",
+    "realtime infrastructure",
+    "developer tools",
+  ],
   twitter: {
     card: "summary_large_image",
     title: "SummonStream",
