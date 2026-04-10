@@ -1,0 +1,97 @@
+[
+  {
+    "date": "2026-04-10",
+    "entries": [
+      {
+        "title": "Passkey authentication",
+        "description": "Sign in with biometrics or hardware security keys. Register and manage passkeys from the Security tab in Settings.",
+        "size": "major"
+      },
+      {
+        "title": "App detail page with code snippets",
+        "description": "View credentials, copy integration snippets for client SDK, auth routes, and publish endpoints — all scoped to your app key.",
+        "size": "major"
+      },
+      {
+        "title": "Webhook management per application",
+        "description": "Configure webhook endpoints on each app to receive channel lifecycle events (occupied, vacated, member changes).",
+        "size": "major"
+      },
+      {
+        "title": "Dark and light mode",
+        "description": "Theme toggle in the user menu cycles between dark, light, and system preference.",
+        "size": "major"
+      },
+      {
+        "title": "Real password change flow",
+        "description": "The Security settings tab now has a working password change form instead of a placeholder.",
+        "size": "minor"
+      },
+      {
+        "title": "Pro plan capped at 10 applications",
+        "description": "The Pro tier now allows up to 10 applications instead of unlimited, aligning with sustainable platform limits.",
+        "size": "minor"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-09",
+    "entries": [
+      {
+        "title": "Stripe billing integration",
+        "description": "Full checkout flow for Pro plan upgrades, webhook-driven subscription persistence, and Stripe Customer Portal access from Settings.",
+        "size": "major"
+      },
+      {
+        "title": "Better Auth with email and password",
+        "description": "Replaced hardcoded demo credentials with real authentication. Separate login and signup pages with first/last name collection and password confirmation.",
+        "size": "major"
+      },
+      {
+        "title": "Neon Postgres database",
+        "description": "Production database provisioned via Vercel Marketplace. Prisma schema covers users, sessions, apps, channel policies, subscriptions, and webhooks.",
+        "size": "major"
+      },
+      {
+        "title": "Applications CRUD",
+        "description": "Create, list, and delete realtime applications. Each app gets a unique key and secret for SDK integration.",
+        "size": "major"
+      },
+      {
+        "title": "Channel policies",
+        "description": "Define pattern-based rules for channel types (public, private, presence, encrypted) scoped to each application.",
+        "size": "major"
+      },
+      {
+        "title": "Active channels monitor",
+        "description": "Live polling view of channel traffic across your applications, refreshing every 10 seconds.",
+        "size": "major"
+      },
+      {
+        "title": "Settings with profile, security, and billing tabs",
+        "description": "Edit your name, manage passkeys, change password, view subscription status, and access Stripe portal — all in one place.",
+        "size": "major"
+      }
+    ]
+  },
+  {
+    "date": "2026-04-08",
+    "entries": [
+      {
+        "title": "Marketing site launch",
+        "description": "Landing page, pricing, documentation with 10+ pages covering quickstart, architecture, channels, auth, encryption, deployment guides, and API reference.",
+        "size": "major"
+      },
+      {
+        "title": "Client SDK documentation",
+        "description": "Full API reference for @summoniq/summon-flow including constructor options, channel methods, connection events, and presence.",
+        "size": "major"
+      },
+      {
+        "title": "Open source repository",
+        "description": "Monorepo published to GitHub with MIT license. Includes client SDK, console app, and marketing site.",
+        "size": "major"
+      }
+    ]
+  }
+]
