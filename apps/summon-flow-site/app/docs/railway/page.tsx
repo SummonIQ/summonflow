@@ -26,7 +26,7 @@ export default function RailwayDoc() {
             Terminal
           </div>
           <div className="text-zinc-500 italic"># Clone and deploy</div>
-          <div className="text-teal-400">git clone https://github.com/SummonIQ/summon-flow.git</div>
+          <div className="text-teal-400">git clone https://github.com/SummonIQ/summonflow.git</div>
           <div className="text-teal-400">cd summon-flow</div>
           <div className="text-teal-400">railway up</div>
         </div>

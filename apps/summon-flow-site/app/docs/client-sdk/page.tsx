@@ -87,7 +87,7 @@ export default function ClientSdkDoc() {
 
       <section className="mt-12 rounded-xl border border-zinc-800 bg-zinc-900/30 p-6">
         <p className="text-sm text-zinc-400">
-          Full source: <a href="https://github.com/SummonIQ/summon-flow/tree/main/packages/summon-flow-client" target="_blank" rel="noopener noreferrer" className="text-teal-500 hover:underline">github.com/SummonIQ/summon-flow/packages/summon-flow-client</a>
+          Full source: <a href="https://github.com/SummonIQ/summonflow/tree/main/packages/summon-flow-client" target="_blank" rel="noopener noreferrer" className="text-teal-500 hover:underline">github.com/SummonIQ/summonflow/packages/summon-flow-client</a>
         </p>
       </section>
     </article>

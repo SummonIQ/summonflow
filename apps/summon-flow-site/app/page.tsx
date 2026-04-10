@@ -44,7 +44,7 @@ export default function MarketingHome() {
             <Link href="/pricing">Pricing</Link>
             <Link href="/docs">Docs</Link>
             <a
-              href="https://github.com/SummonIQ/summon-flow"
+              href="https://github.com/SummonIQ/summonflow"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5"
@@ -87,7 +87,7 @@ export default function MarketingHome() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <a
-                href="https://github.com/SummonIQ/summon-flow"
+                href="https://github.com/SummonIQ/summonflow"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--surface)] px-6 py-3 text-sm font-semibold text-[var(--foreground)] transition hover:bg-white/5"
@@ -99,7 +99,7 @@ export default function MarketingHome() {
 
             <div className="mt-4 flex items-center gap-6 text-xs text-[var(--muted)]">
               <a
-                href="https://github.com/SummonIQ/summon-flow/tree/main/packages/summon-flow-client"
+                href="https://github.com/SummonIQ/summonflow/tree/main/packages/summon-flow-client"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 hover:text-[var(--foreground)] transition"
@@ -240,7 +240,7 @@ export default function MarketingHome() {
                 <div className="flex items-center justify-between">
                   <div className="font-[var(--font-mono)] text-sm font-semibold text-[var(--foreground)]">Free</div>
                   <a
-                    href="https://github.com/SummonIQ/summon-flow"
+                    href="https://github.com/SummonIQ/summonflow"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--teal)] hover:underline"
@@ -409,7 +409,7 @@ export default function MarketingHome() {
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <a
-                  href="https://github.com/SummonIQ/summon-flow"
+                  href="https://github.com/SummonIQ/summonflow"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-[var(--line)] bg-[var(--surface)] px-6 py-3 text-sm font-semibold"
@@ -440,10 +440,10 @@ export default function MarketingHome() {
               </div>
             </div>
             <div className="flex items-center gap-6 text-sm text-[var(--muted)]">
-              <a href="https://github.com/SummonIQ/summon-flow" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--foreground)] transition">GitHub</a>
+              <a href="https://github.com/SummonIQ/summonflow" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--foreground)] transition">GitHub</a>
               <Link href="/docs" className="hover:text-[var(--foreground)] transition">Docs</Link>
               <Link href="/pricing" className="hover:text-[var(--foreground)] transition">Pricing</Link>
-              <a href="https://github.com/SummonIQ/summon-flow/tree/main/packages/summon-flow-client" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--foreground)] transition">Client SDK</a>
+              <a href="https://github.com/SummonIQ/summonflow/tree/main/packages/summon-flow-client" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--foreground)] transition">Client SDK</a>
             </div>
           </div>
         </footer>

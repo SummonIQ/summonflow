@@ -45,19 +45,19 @@ export default function DocsIntroduction() {
         <h2 className="text-lg font-bold text-white mb-4">Open Source Repositories</h2>
         <div className="space-y-3">
           <a
-            href="https://github.com/SummonIQ/summon-flow"
+            href="https://github.com/SummonIQ/summonflow"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 rounded-lg border border-zinc-800 bg-zinc-900/50 p-4 hover:border-zinc-700 transition group"
           >
             <Github className="h-5 w-5 text-zinc-400 group-hover:text-white transition" />
             <div>
-              <div className="text-sm font-semibold text-white">SummonIQ/summon-flow</div>
+              <div className="text-sm font-semibold text-white">SummonIQ/summonflow</div>
               <div className="text-xs text-zinc-500">Monorepo: server runtime, console, marketing site, and deployment configs.</div>
             </div>
           </a>
           <a
-            href="https://github.com/SummonIQ/summon-flow/tree/main/packages/summon-flow-client"
+            href="https://github.com/SummonIQ/summonflow/tree/main/packages/summon-flow-client"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 rounded-lg border border-zinc-800 bg-zinc-900/50 p-4 hover:border-zinc-700 transition group"

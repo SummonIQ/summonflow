@@ -17,7 +17,7 @@ const plans = [
       "Full source access (MIT)",
     ],
     cta: { label: "Start Free", href: "https://console.summonflow.com" },
-    secondaryCta: { label: "Self-host from GitHub", href: "https://github.com/SummonIQ/summon-flow" },
+    secondaryCta: { label: "Self-host from GitHub", href: "https://github.com/SummonIQ/summonflow" },
   },
   {
     name: "Pro",
@@ -158,16 +158,16 @@ export default function PricingPage() {
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-4">
             <a
-              href="https://github.com/SummonIQ/summon-flow"
+              href="https://github.com/SummonIQ/summonflow"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] px-5 py-2.5 text-sm font-semibold hover:bg-[var(--surface-strong)] transition"
             >
               <Github className="h-4 w-4" />
-              SummonIQ/summon-flow
+              SummonIQ/summonflow
             </a>
             <a
-              href="https://github.com/SummonIQ/summon-flow/tree/main/packages/summon-flow-client"
+              href="https://github.com/SummonIQ/summonflow/tree/main/packages/summon-flow-client"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition"

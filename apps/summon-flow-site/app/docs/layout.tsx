@@ -114,8 +114,8 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
                 Found a bug? Join our Discord or open an issue on GitHub.
               </p>
               <div className="mt-4 flex gap-3">
-                <a href="https://github.com/SummonIQ/summon-flow" target="_blank" rel="noopener noreferrer" className="text-[11px] font-bold text-teal-500 uppercase tracking-widest hover:underline">GitHub</a>
-                <a href="https://github.com/SummonIQ/summon-flow/discussions" target="_blank" rel="noopener noreferrer" className="text-[11px] font-bold text-teal-500 uppercase tracking-widest hover:underline">Discussions</a>
+                <a href="https://github.com/SummonIQ/summonflow" target="_blank" rel="noopener noreferrer" className="text-[11px] font-bold text-teal-500 uppercase tracking-widest hover:underline">GitHub</a>
+                <a href="https://github.com/SummonIQ/summonflow/discussions" target="_blank" rel="noopener noreferrer" className="text-[11px] font-bold text-teal-500 uppercase tracking-widest hover:underline">Discussions</a>
               </div>
             </div>
           </div>

@@ -33,7 +33,7 @@ export default function QuickstartDoc() {
             <Terminal className="h-4 w-4" />
             Terminal
           </div>
-          <div className="text-teal-400">git clone https://github.com/SummonIQ/summon-flow.git</div>
+          <div className="text-teal-400">git clone https://github.com/SummonIQ/summonflow.git</div>
           <div className="text-teal-400">cd summon-flow</div>
           <div className="text-teal-400">bun install</div>
         </div>
@@ -57,7 +57,7 @@ export default function QuickstartDoc() {
           <div className="mt-2 text-zinc-500 italic"># or: npm install @summoniq/summon-flow</div>
         </div>
         <p className="text-zinc-500 text-xs">
-          Source: <a href="https://github.com/SummonIQ/summon-flow/tree/main/packages/summon-flow-client" target="_blank" rel="noopener noreferrer" className="text-teal-500 hover:underline">packages/summon-flow-client</a>
+          Source: <a href="https://github.com/SummonIQ/summonflow/tree/main/packages/summon-flow-client" target="_blank" rel="noopener noreferrer" className="text-teal-500 hover:underline">packages/summon-flow-client</a>
         </p>
 
         <h3 className="text-lg font-semibold text-white mt-8">4. Connect from your app</h3>
@@ -139,7 +139,7 @@ export default function QuickstartDoc() {
           <Link href="/docs/channels" className="text-teal-500 font-bold text-sm uppercase tracking-widest hover:underline">
             Channels & Presence &rarr;
           </Link>
-          <a href="https://github.com/SummonIQ/summon-flow/tree/main/packages/summon-flow-client#readme" target="_blank" rel="noopener noreferrer" className="text-teal-500 font-bold text-sm uppercase tracking-widest hover:underline">
+          <a href="https://github.com/SummonIQ/summonflow/tree/main/packages/summon-flow-client#readme" target="_blank" rel="noopener noreferrer" className="text-teal-500 font-bold text-sm uppercase tracking-widest hover:underline">
             Client SDK Reference &rarr;
           </a>
         </div>
