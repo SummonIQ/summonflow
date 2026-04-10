@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f5efe5;
+  --foreground: #161616;
+  --muted: #70675d;
+  --surface: rgba(255, 252, 247, 0.72);
+  --surface-strong: rgba(255, 249, 241, 0.92);
+  --line: rgba(37, 28, 19, 0.1);
+  --accent: #c2512f;
+  --accent-strong: #7e2e14;
+  --teal: #0f4c53;
+  --gold: #e8b04d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(232, 176, 77, 0.2), transparent 28%),
+    radial-gradient(circle at top right, rgba(15, 76, 83, 0.18), transparent 32%),
+    linear-gradient(180deg, #fcf7f0 0%, #f4ecdf 42%, #efe4d4 100%);
+  color: var(--foreground);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-shell {
+  position: relative;
+  overflow: hidden;
+}
+
+.page-shell::before,
+.page-shell::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  inset: auto;
+  border-radius: 999px;
+  filter: blur(70px);
+  opacity: 0.5;
+}
+
+.page-shell::before {
+  top: -8rem;
+  left: -8rem;
+  width: 24rem;
+  height: 24rem;
+  background: rgba(232, 176, 77, 0.28);
+}
+
+.page-shell::after {
+  right: -8rem;
+  top: 8rem;
+  width: 28rem;
+  height: 28rem;
+  background: rgba(15, 76, 83, 0.18);
+}
+
+.mesh-card {
+  background:
+    linear-gradient(180deg, rgba(255, 250, 244, 0.95), rgba(255, 248, 240, 0.82)),
+    radial-gradient(circle at top right, rgba(194, 81, 47, 0.12), transparent 32%);
+  backdrop-filter: blur(16px);
+}
+
+.grid-lines {
+  background-image:
+    linear-gradient(to right, rgba(37, 28, 19, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(37, 28, 19, 0.05) 1px, transparent 1px);
+  background-size: 2.75rem 2.75rem;
+}
+
+.fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
+
+.fade-up-delay {
+  animation: fade-up 0.95s ease-out both;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
