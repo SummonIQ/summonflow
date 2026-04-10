@@ -5,3 +5,9 @@ apps/*/.next
 apps/*/out
 apps/*/dist
 *.tsbuildinfo
+apps/*/generated
+.env
+.env.*
+!.env.example
+.vercel
+.env*.local

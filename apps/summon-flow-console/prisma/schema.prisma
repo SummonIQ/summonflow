@@ -1,0 +1,162 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─── Auth (better-auth) ────────────────────────────────────────
+
+model User {
+  createdAt     DateTime  @default(now())
+  email         String    @unique
+  emailVerified Boolean   @default(false)
+  firstName     String
+  id            String    @id @default(cuid())
+  image         String?
+  lastName      String
+  name          String?
+  updatedAt     DateTime  @updatedAt
+
+  accounts     Account[]
+  passkeys     Passkey[]
+  sessions     Session[]
+  apps         App[]
+  subscription Subscription?
+
+  @@map("user")
+}
+
+model Passkey {
+  id             String    @id
+  name           String?
+  publicKey      String
+  userId         String
+  credentialID   String    @unique
+  counter        Int
+  deviceType     String
+  backedUp       Boolean
+  transports     String?
+  createdAt      DateTime? @default(now())
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("passkey")
+}
+
+model Session {
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+  id        String   @id @default(cuid())
+  ipAddress String?
+  token     String   @unique
+  updatedAt DateTime @updatedAt
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("session")
+}
+
+model Account {
+  accessToken           String?
+  accessTokenExpiresAt  DateTime?
+  accountId             String
+  createdAt             DateTime  @default(now())
+  id                    String    @id
+  idToken               String?
+  password              String?
+  providerId            String
+  refreshToken          String?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  updatedAt             DateTime  @updatedAt
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("account")
+}
+
+model Verification {
+  id         String    @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime?
+  updatedAt  DateTime?
+
+  @@map("verification")
+}
+
+// ─── Billing ───────────────────────────────────────────────────
+
+model Subscription {
+  id                   String   @id @default(cuid())
+  cancelAtPeriodEnd    Boolean  @default(false)
+  createdAt            DateTime @default(now())
+  currentPeriodEnd     DateTime
+  currentPeriodStart   DateTime @default(now())
+  plan                 String
+  priceId              String?
+  status               String
+  stripeCustomerId     String   @unique
+  stripeSubscriptionId String   @unique
+  updatedAt            DateTime @updatedAt
+  userId               String   @unique
+  user                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([stripeCustomerId])
+}
+
+// ─── Core Domain ───────────────────────────────────────────────
+
+model App {
+  id          String   @id @default(cuid())
+  name        String
+  key         String   @unique @default(cuid())
+  secret      String   @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  channelPolicies ChannelPolicy[]
+  webhooks        Webhook[]
+
+  @@index([userId])
+}
+
+model ChannelPolicy {
+  id        String      @id @default(cuid())
+  appId     String
+  pattern   String
+  type      ChannelType
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  app       App         @relation(fields: [appId], references: [id], onDelete: Cascade)
+
+  @@unique([appId, pattern])
+}
+
+model Webhook {
+  id        String   @id @default(cuid())
+  appId     String
+  url       String
+  secret    String   @default(cuid())
+  events    String[]
+  enabled   Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  app       App      @relation(fields: [appId], references: [id], onDelete: Cascade)
+
+  @@index([appId])
+}
+
+enum ChannelType {
+  PUBLIC
+  PRIVATE
+  PRESENCE
+  ENCRYPTED
+}

@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f8fa;
+  --panel: #ffffff;
+  --panel-2: #f0f2f5;
+  --panel-3: rgba(255, 255, 255, 0.84);
+  --foreground: #111318;
+  --muted: #6b7280;
+  --line: rgba(0, 0, 0, 0.08);
+  --line-strong: rgba(0, 0, 0, 0.14);
+  --accent: #0f9e8a;
+  --accent-2: #3b82f6;
+  --warning: #d97706;
+  --danger: #ef4444;
+}
+
+.dark {
+  --background: #0b1114;
+  --panel: #10181d;
+  --panel-2: #121f25;
+  --panel-3: rgba(16, 24, 29, 0.84);
+  --foreground: #edf5f4;
+  --muted: #88a1a0;
+  --line: rgba(164, 199, 196, 0.12);
+  --line-strong: rgba(164, 199, 196, 0.2);
+  --accent: #27c0a8;
+  --accent-2: #8cc9ff;
+  --warning: #efb457;
+  --danger: #ff7b6b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.dark body {
+  background:
+    radial-gradient(circle at top right, rgba(39, 192, 168, 0.14), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(140, 201, 255, 0.12), transparent 25%),
+    linear-gradient(180deg, #081013 0%, #0c1418 100%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.panel {
+  background:
+    linear-gradient(180deg, rgba(20, 29, 34, 0.96), rgba(13, 20, 24, 0.96)),
+    radial-gradient(circle at top right, rgba(39, 192, 168, 0.09), transparent 28%);
+  backdrop-filter: blur(14px);
+}
+
+.mesh {
+  background-image:
+    linear-gradient(to right, rgba(164, 199, 196, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(164, 199, 196, 0.04) 1px, transparent 1px);
+  background-size: 2.5rem 2.5rem;
+}
+
+.signal-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.35rem 0.7rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
