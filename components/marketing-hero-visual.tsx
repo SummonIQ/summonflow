@@ -63,37 +63,38 @@ export function MarketingHeroVisual() {
       {/* Origin-locked Rings and Logo */}
       <div className="absolute inset-0 pointer-events-none" style={{ transformStyle: "preserve-3d" }}>
         {Array.from({ length: 12 }, (_, index) => (
-          <motion.div
-            key={index}
-            className="absolute rounded-full will-change-[transform,opacity]"
-            style={{
-              ...signalCoreAnchor,
-              width: "3rem",
-              height: "3rem",
-              background:
-                "radial-gradient(circle, transparent 45%, rgba(50,214,196,0.22) 48%, rgba(50,214,196,0.08) 52%, transparent 58%)",
-            }}
-            initial={{ opacity: 0, scale: 1, x: "-50%", y: "-50%" }}
-            animate={{
-              scale: [1, 48],
-              opacity: [0, 0.16, 0.07, 0.015, 0],
-              x: "-50%",
-              y: "-50%",
-            }}
-            transition={{
-              duration: 18,
-              delay: index * 1.5,
-              repeat: Infinity,
-              ease: "linear",
-              opacity: {
+            <motion.div
+              key={index}
+              className="absolute rounded-full will-change-[transform,opacity]"
+              style={{
+                ...signalCoreAnchor,
+                width: "3rem",
+                height: "3rem",
+                background:
+                  "radial-gradient(circle, transparent 45%, rgba(50,214,196,0.22) 48%, rgba(50,214,196,0.08) 52%, transparent 58%)",
+              }}
+              initial={{ opacity: 0, scale: 1, x: "-50%", y: "-50%" }}
+              whileInView={{
+                scale: [1, 48],
+                opacity: [0, 0.16, 0.07, 0.015, 0],
+                x: "-50%",
+                y: "-50%",
+              }}
+              viewport={{ once: true }}
+              transition={{
                 duration: 18,
                 delay: index * 1.5,
                 repeat: Infinity,
-                ease: "easeOut",
-                times: [0, 0.1, 0.3, 0.6, 1],
-              },
-            }}
-          />
+                ease: "linear",
+                opacity: {
+                  duration: 18,
+                  delay: index * 1.5,
+                  repeat: Infinity,
+                  ease: "easeOut",
+                  times: [0, 0.1, 0.3, 0.6, 1],
+                },
+              }}
+            />
         ))}
 
         {/* Static Logo Components */}
