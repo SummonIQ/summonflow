@@ -7,16 +7,16 @@ import { BrandMark } from "@/components/brand-mark";
 const orbitItems = [
   {
     label: "Presence",
-    detail: "128 live",
+    detail: "See who's online",
     icon: Users,
-    className: "left-[5%] top-[18%]",
+    className: "left-[5%] top-[32%]",
     y: [0, -10, 0],
     x: [0, 8, 0],
     duration: 9.8,
   },
   {
     label: "Encrypted",
-    detail: "AES-256-GCM",
+    detail: "Secure by default",
     icon: Lock,
     className: "right-[6%] top-[12%]",
     y: [0, 12, 0],
@@ -24,8 +24,8 @@ const orbitItems = [
     duration: 10.6,
   },
   {
-    label: "Fanout",
-    detail: "Redis-backed",
+    label: "Broadcast",
+    detail: "< 50ms, anywhere",
     icon: Zap,
     className: "right-[7%] bottom-[21%]",
     y: [0, -9, 0],
@@ -34,9 +34,9 @@ const orbitItems = [
   },
   {
     label: "Channels",
-    detail: "4 types",
+    detail: "Primitives that flex",
     icon: Radio,
-    className: "left-[7%] bottom-[18%]",
+    className: "left-[36%] top-[-6%]",
     y: [0, 11, 0],
     x: [0, 10, 0],
     duration: 11.2,
@@ -113,8 +113,8 @@ export function MarketingHeroVisual() {
           <BrandMark className="text-teal-500" />
         </div>
         <div 
-          className="absolute rounded-full bg-[linear-gradient(135deg,color-mix(in_srgb,var(--teal)_34%,transparent),color-mix(in_srgb,var(--teal)_22%,transparent)_58%,color-mix(in_srgb,var(--foreground)_12%,transparent))] px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--teal)] shadow-[0_14px_28px_-18px_rgba(10,90,84,0.9)] w-[4.4rem] leading-tight text-center"
-          style={{ left: "50%", top: "42.8%", transform: "translateX(-50%)" }}
+          className="absolute rounded-full bg-[linear-gradient(135deg,color-mix(in_srgb,var(--teal)_34%,transparent),color-mix(in_srgb,var(--teal)_22%,transparent)_58%,color-mix(in_srgb,var(--foreground)_12%,transparent))] px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--teal)] shadow-[0_14px_28px_-18px_rgba(10,90,84,0.9)] leading-tight text-center"
+          style={{ left: "50%", top: "45%", transform: "translateX(-50%)" }}
         >
           Signal Core
         </div>
@@ -159,7 +159,7 @@ export function MarketingHeroVisual() {
         return (
           <motion.div
             key={item.label}
-            className={`absolute ${item.className} rounded-[1.35rem] border-x-0 border-t border-b border-t-[color:rgb(89_104_109)] border-b-[color:rgb(16_23_27)] bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.15),transparent_40%),linear-gradient(to_bottom_right,rgba(108,126,132,0.2)_0%,rgba(24,35,40,0.78)_52%,rgba(9,14,17,0.92)_100%)] p-4 shadow-[0_28px_54px_-16px_rgba(2,8,10,0.54),0_52px_136px_-34px_rgba(4,12,15,0.74)] backdrop-blur-xl will-change-transform [transform:translate3d(0,0,0)]`}
+            className={`absolute ${item.className} rounded-[1.35rem] border-x-0 border-t border-b border-t-[color:rgb(89_104_109)] border-b-[color:rgb(16_23_27)] bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.05),transparent_40%),linear-gradient(to_bottom_right,rgba(108,126,132,0.2)_0%,rgba(24,35,40,0.78)_52%,rgba(9,14,17,0.92)_100%)] p-4 pr-[18px] shadow-[0_28px_54px_-16px_rgba(2,8,10,0.54),0_52px_136px_-34px_rgba(4,12,15,0.74)] backdrop-blur-xl will-change-transform [transform:translate3d(0,0,0)]`}
             animate={{ y: item.y, x: item.x }}
             transition={{ duration: item.duration, repeat: Infinity, ease: "easeInOut" }}
           >
@@ -197,7 +197,7 @@ export function MarketingHeroVisual() {
       </motion.div>
 
       <motion.div
-        className="absolute left-[38%] top-[6%] overflow-hidden rounded-full border border-[rgba(180,220,215,0.18)] bg-[linear-gradient(to_bottom_right,rgba(140,232,215,0.18),rgba(24,60,62,0.4)_60%,rgba(8,22,26,0.58))] px-3 py-1.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-[color:color-mix(in_srgb,var(--teal)_72%,white_28%)] shadow-[0_18px_34px_-18px_rgba(6,40,42,0.7)] backdrop-blur-2xl will-change-transform [transform:translate3d(0,0,0)]"
+        className="absolute left-[38%] top-[24%] overflow-hidden rounded-full border border-[rgba(180,220,215,0.18)] bg-[linear-gradient(to_bottom_right,rgba(140,232,215,0.18),rgba(24,60,62,0.4)_60%,rgba(8,22,26,0.58))] px-3 py-1.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-[color:color-mix(in_srgb,var(--teal)_72%,white_28%)] shadow-[0_18px_34px_-18px_rgba(6,40,42,0.7)] backdrop-blur-2xl will-change-transform [transform:translate3d(0,0,0)]"
         animate={{ x: [0, -7, 0], y: [0, 8, 0] }}
         transition={{ duration: 8.4, repeat: Infinity, ease: "easeInOut" }}
       >
@@ -221,7 +221,7 @@ export function MarketingHeroVisual() {
       </motion.div>
 
       <motion.div
-        className="absolute bottom-[8%] left-1/2 -translate-x-1/2 rounded-[1.35rem] border-x-0 border-t border-b border-t-[color:rgb(89_104_109)] border-b-[color:rgb(16_23_27)] bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.15),transparent_40%),linear-gradient(to_bottom_right,rgba(108,126,132,0.2)_0%,rgba(24,35,40,0.78)_52%,rgba(9,14,17,0.92)_100%)] p-4 shadow-[0_28px_58px_-18px_rgba(2,8,10,0.56),0_54px_140px_-38px_rgba(4,12,15,0.76)] backdrop-blur-xl will-change-transform [transform:translate3d(-50%,0,0)]"
+        className="absolute bottom-[18%] left-[42%] -translate-x-1/2 rounded-[1.35rem] border-x-0 border-t border-b border-t-[color:rgb(89_104_109)] border-b-[color:rgb(16_23_27)] bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.05),transparent_40%),linear-gradient(to_bottom_right,rgba(108,126,132,0.2)_0%,rgba(24,35,40,0.78)_52%,rgba(9,14,17,0.92)_100%)] p-4 pr-[18px] shadow-[0_28px_58px_-18px_rgba(2,8,10,0.56),0_54px_140px_-38px_rgba(4,12,15,0.76)] backdrop-blur-xl will-change-transform [transform:translate3d(-50%,0,0)]"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 10.4, repeat: Infinity, ease: "easeInOut" }}
       >
@@ -231,7 +231,7 @@ export function MarketingHeroVisual() {
           </span>
           <span>Deployment</span>
         </div>
-        <div className="mt-1.5 pl-7 text-[15px] font-semibold leading-none text-[var(--foreground)]">fanout acknowledged in 38ms</div>
+        <div className="mt-1.5 pl-7 text-[15px] font-semibold leading-none text-[var(--foreground)]">Ship in minutes</div>
       </motion.div>
     </div>
   );
