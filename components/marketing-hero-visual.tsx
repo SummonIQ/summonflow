@@ -50,18 +50,16 @@ export function MarketingHeroVisual() {
   } as const;
 
   return (
-    <div className="relative h-[34rem] w-[min(46rem,100vw-2rem)] max-w-none overflow-visible lg:h-[38rem]">
+    <div className="relative pt-12 h-[34rem] w-[min(46rem,100vw-2rem)] max-w-none overflow-visible lg:h-[38rem]">
       <motion.div
         className="absolute left-1/2 top-1/2 h-[16rem] w-[16rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--teal)_20%,transparent)_0%,color-mix(in_srgb,var(--accent)_12%,transparent)_38%,transparent_72%)] blur-2xl"
         animate={{ scale: [0.96, 1.06, 0.96], opacity: [0.62, 0.88, 0.62] }}
         transition={{ duration: 7.2, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <motion.div
+      <div
         className="absolute h-[10rem] w-[10rem] -translate-x-1/2 -translate-y-1/2"
         style={signalCoreAnchor}
-        animate={{ rotate: [0, 2, 0, -2, 0], y: [0, -6, 0, 4, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
       >
         <div className="relative flex h-full items-center justify-center">
           {Array.from({ length: 12 }, (_, index) => (
@@ -74,35 +72,40 @@ export function MarketingHeroVisual() {
                 background:
                   "radial-gradient(circle, transparent 45%, rgba(50,214,196,0.22) 48%, rgba(50,214,196,0.08) 52%, transparent 58%)",
               }}
+              initial={{ opacity: 0, scale: 1 }}
               animate={{
                 scale: [1, 36],
-                opacity: [0, 0.07, 0.04, 0.015, 0],
+                opacity: [0, 0.16, 0.07, 0.015, 0],
               }}
               transition={{
                 duration: 18,
                 delay: index * 1.5,
                 repeat: Infinity,
                 ease: "linear",
-                opacity: { duration: 18, delay: index * 1.5, repeat: Infinity, ease: "easeOut", times: [0, 0.12, 0.34, 0.72, 1] },
+                opacity: {
+                  duration: 18,
+                  delay: index * 1.5,
+                  repeat: Infinity,
+                  ease: "easeOut",
+                  times: [0, 0.1, 0.3, 0.6, 1],
+                },
               }}
             />
           ))}
           <div className="absolute left-1/2 top-1/2 h-[3rem] w-[3rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[rgba(50,214,196,0.14)] shadow-[0_0_20px_rgba(50,214,196,0.05)]" />
-          <motion.div
+          <div
             className="absolute inset-0 rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--foreground)_10%,transparent)_0%,transparent_72%)] blur-xl"
-            animate={{ scale: [0.96, 1.08, 0.96], opacity: [0.26, 0.4, 0.26] }}
-            transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }}
           />
           <div className="absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--teal)_16%,transparent)_0%,transparent_72%)]">
             <BrandMark className="text-teal-500" />
           </div>
-          <div className="absolute left-1/2 top-[72%] -translate-x-1/2 rounded-full bg-[linear-gradient(135deg,color-mix(in_srgb,var(--teal)_34%,transparent),color-mix(in_srgb,var(--teal)_22%,transparent)_58%,color-mix(in_srgb,var(--foreground)_12%,transparent))] px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--teal)] shadow-[0_14px_28px_-18px_rgba(10,90,84,0.9)]">
+          <div className="absolute left-1/2 top-[72%] -translate-x-1/2 rounded-full bg-[linear-gradient(135deg,color-mix(in_srgb,var(--teal)_34%,transparent),color-mix(in_srgb,var(--teal)_22%,transparent)_58%,color-mix(in_srgb,var(--foreground)_12%,transparent))] px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--teal)] shadow-[0_14px_28px_-18px_rgba(10,90,84,0.9)] w-[4.4rem] leading-tight text-center">
             Signal Core
           </div>
         </div>
-      </motion.div>
+      </div>
 
-      <div className="absolute left-1/2 top-[24.25%] h-[7rem] w-px -translate-x-1/2 overflow-hidden">
+      <div className="absolute left-1/2 top-[13%] h-[7rem] w-px -translate-x-1/2 overflow-hidden">
         <div
           className="absolute inset-x-0 inset-y-0 z-0 bg-[linear-gradient(180deg,transparent,color-mix(in_srgb,var(--teal)_28%,transparent),transparent)] opacity-70 shadow-[0_0_8px_rgba(42,210,192,0.12)]"
         />
@@ -112,7 +115,7 @@ export function MarketingHeroVisual() {
           transition={{ duration: 5.6, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
-      <div className="absolute bottom-[24.25%] left-1/2 h-[6.5rem] w-px -translate-x-1/2 overflow-hidden">
+      <div className="absolute top-[52%] left-1/2 h-[6.5rem] w-px -translate-x-1/2 overflow-hidden">
         <div
           className="absolute inset-x-0 inset-y-0 z-0 bg-[linear-gradient(180deg,transparent,color-mix(in_srgb,var(--teal)_28%,transparent),transparent)] opacity-70 shadow-[0_0_8px_rgba(42,210,192,0.12)]"
         />
@@ -122,7 +125,7 @@ export function MarketingHeroVisual() {
           transition={{ duration: 5.6, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
-      <div className="absolute left-[28%] top-1/2 h-px w-[7rem] -translate-y-1/2 overflow-hidden">
+      <div className="absolute left-[28%] top-[39.5%] h-px w-[7rem] -translate-y-1/2 overflow-hidden">
         <div
           className="absolute inset-0 z-0 bg-[linear-gradient(90deg,transparent,color-mix(in_srgb,var(--teal)_28%,transparent),transparent)] opacity-70 shadow-[0_0_8px_rgba(42,210,192,0.12)]"
         />
@@ -132,7 +135,7 @@ export function MarketingHeroVisual() {
           transition={{ duration: 5.6, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
-      <div className="absolute right-[28%] top-1/2 h-px w-[7rem] -translate-y-1/2 overflow-hidden">
+      <div className="absolute right-[28%] top-[39.5%] h-px w-[7rem] -translate-y-1/2 overflow-hidden">
         <div
           className="absolute inset-0 z-0 bg-[linear-gradient(90deg,transparent,color-mix(in_srgb,var(--teal)_28%,transparent),transparent)] opacity-70 shadow-[0_0_8px_rgba(42,210,192,0.12)]"
         />
