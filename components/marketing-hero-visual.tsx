@@ -50,27 +50,29 @@ export function MarketingHeroVisual() {
   } as const;
 
   return (
-    <div className="relative pt-12 h-[34rem] w-[min(46rem,100vw-2rem)] max-w-none overflow-visible lg:h-[38rem]">
+    <div className="relative pt-12 h-[34rem] w-[min(46rem,100vw-2rem)] max-w-none overflow-visible lg:h-[38rem] [transform-style:preserve-3d]">
       <motion.div
-        className="absolute left-1/2 top-1/2 h-[16rem] w-[16rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--teal)_20%,transparent)_0%,color-mix(in_srgb,var(--accent)_12%,transparent)_38%,transparent_72%)] blur-2xl"
+        className="absolute h-[16rem] w-[16rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--teal)_20%,transparent)_0%,color-mix(in_srgb,var(--accent)_12%,transparent)_38%,transparent_72%)] blur-2xl will-change-[transform,opacity]"
+        style={signalCoreAnchor}
         animate={{ scale: [0.96, 1.06, 0.96], opacity: [0.62, 0.88, 0.62] }}
         transition={{ duration: 7.2, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <div
-        className="absolute h-[10rem] w-[10rem] -translate-x-1/2 -translate-y-1/2"
+        className="absolute h-[10rem] w-[10rem] -translate-x-1/2 -translate-y-1/2 [transform-style:preserve-3d]"
         style={signalCoreAnchor}
       >
         <div className="relative flex h-full items-center justify-center">
           {Array.from({ length: 12 }, (_, index) => (
             <motion.div
               key={index}
-              className="absolute left-1/2 top-1/2 rounded-full -translate-x-1/2 -translate-y-1/2"
+              className="absolute left-1/2 top-1/2 rounded-full will-change-[transform,opacity]"
               style={{
                 width: "3rem",
                 height: "3rem",
                 background:
                   "radial-gradient(circle, transparent 45%, rgba(50,214,196,0.22) 48%, rgba(50,214,196,0.08) 52%, transparent 58%)",
+                transform: "translate3d(-50%, -50%, 0)",
               }}
               initial={{ opacity: 0, scale: 1 }}
               animate={{
@@ -110,7 +112,7 @@ export function MarketingHeroVisual() {
           className="absolute inset-x-0 inset-y-0 z-0 bg-[linear-gradient(180deg,transparent,color-mix(in_srgb,var(--teal)_28%,transparent),transparent)] opacity-70 shadow-[0_0_8px_rgba(42,210,192,0.12)]"
         />
         <motion.div
-          className="absolute bottom-0 left-0 z-10 h-[2.1rem] w-full bg-[linear-gradient(180deg,transparent,color-mix(in_srgb,var(--teal)_48%,transparent),transparent)]"
+          className="absolute bottom-0 left-0 z-10 h-[2.1rem] w-full bg-[linear-gradient(180deg,transparent,color-mix(in_srgb,var(--teal)_48%,transparent),transparent)] will-change-transform"
           animate={{ y: ["0%", "-320%"], opacity: [0, 0.45, 0] }}
           transition={{ duration: 5.6, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -120,7 +122,7 @@ export function MarketingHeroVisual() {
           className="absolute inset-x-0 inset-y-0 z-0 bg-[linear-gradient(180deg,transparent,color-mix(in_srgb,var(--teal)_28%,transparent),transparent)] opacity-70 shadow-[0_0_8px_rgba(42,210,192,0.12)]"
         />
         <motion.div
-          className="absolute left-0 top-0 z-10 h-[2rem] w-full bg-[linear-gradient(180deg,transparent,color-mix(in_srgb,var(--teal)_48%,transparent),transparent)]"
+          className="absolute left-0 top-0 z-10 h-[2rem] w-full bg-[linear-gradient(180deg,transparent,color-mix(in_srgb,var(--teal)_48%,transparent),transparent)] will-change-transform"
           animate={{ y: ["-10%", "300%"], opacity: [0, 0.4, 0] }}
           transition={{ duration: 5.6, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -130,7 +132,7 @@ export function MarketingHeroVisual() {
           className="absolute inset-0 z-0 bg-[linear-gradient(90deg,transparent,color-mix(in_srgb,var(--teal)_28%,transparent),transparent)] opacity-70 shadow-[0_0_8px_rgba(42,210,192,0.12)]"
         />
         <motion.div
-          className="absolute right-0 top-0 z-10 h-full w-[2.1rem] bg-[linear-gradient(90deg,transparent,color-mix(in_srgb,var(--teal)_48%,transparent),transparent)]"
+          className="absolute right-0 top-0 z-10 h-full w-[2.1rem] bg-[linear-gradient(90deg,transparent,color-mix(in_srgb,var(--teal)_48%,transparent),transparent)] will-change-transform"
           animate={{ x: ["0%", "-320%"], opacity: [0, 0.42, 0] }}
           transition={{ duration: 5.6, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -140,7 +142,7 @@ export function MarketingHeroVisual() {
           className="absolute inset-0 z-0 bg-[linear-gradient(90deg,transparent,color-mix(in_srgb,var(--teal)_28%,transparent),transparent)] opacity-70 shadow-[0_0_8px_rgba(42,210,192,0.12)]"
         />
         <motion.div
-          className="absolute left-0 top-0 z-10 h-full w-[2.1rem] bg-[linear-gradient(90deg,transparent,color-mix(in_srgb,var(--teal)_48%,transparent),transparent)]"
+          className="absolute left-0 top-0 z-10 h-full w-[2.1rem] bg-[linear-gradient(90deg,transparent,color-mix(in_srgb,var(--teal)_48%,transparent),transparent)] will-change-transform"
           animate={{ x: ["-10%", "320%"], opacity: [0, 0.42, 0] }}
           transition={{ duration: 5.6, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -152,7 +154,7 @@ export function MarketingHeroVisual() {
         return (
           <motion.div
             key={item.label}
-            className={`absolute ${item.className} rounded-[1.35rem] border-x-0 border-t border-b border-t-[color:rgb(89_104_109)] border-b-[color:rgb(16_23_27)] bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.15),transparent_40%),linear-gradient(to_bottom_right,rgba(108,126,132,0.2)_0%,rgba(24,35,40,0.78)_52%,rgba(9,14,17,0.92)_100%)] p-4 shadow-[0_28px_54px_-16px_rgba(2,8,10,0.54),0_52px_136px_-34px_rgba(4,12,15,0.74)] backdrop-blur-xl`}
+            className={`absolute ${item.className} rounded-[1.35rem] border-x-0 border-t border-b border-t-[color:rgb(89_104_109)] border-b-[color:rgb(16_23_27)] bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.15),transparent_40%),linear-gradient(to_bottom_right,rgba(108,126,132,0.2)_0%,rgba(24,35,40,0.78)_52%,rgba(9,14,17,0.92)_100%)] p-4 shadow-[0_28px_54px_-16px_rgba(2,8,10,0.54),0_52px_136px_-34px_rgba(4,12,15,0.74)] backdrop-blur-xl will-change-transform [transform:translate3d(0,0,0)]`}
             animate={{ y: item.y, x: item.x }}
             transition={{ duration: item.duration, repeat: Infinity, ease: "easeInOut" }}
           >
@@ -168,7 +170,7 @@ export function MarketingHeroVisual() {
       })}
 
       <motion.div
-        className="absolute right-[18%] top-[44%] overflow-hidden rounded-full border border-[rgba(255,162,162,0.18)] bg-[linear-gradient(to_bottom_right,rgba(255,126,126,0.22),rgba(183,28,28,0.18)_60%,rgba(96,12,12,0.14))] px-3 py-1.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-[#ff4f66] shadow-[0_18px_34px_-18px_rgba(122,20,20,0.82)] backdrop-blur-2xl"
+        className="absolute right-[18%] top-[44%] overflow-hidden rounded-full border border-[rgba(255,162,162,0.18)] bg-[linear-gradient(to_bottom_right,rgba(255,126,126,0.22),rgba(183,28,28,0.18)_60%,rgba(96,12,12,0.14))] px-3 py-1.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-[#ff4f66] shadow-[0_18px_34px_-18px_rgba(122,20,20,0.82)] backdrop-blur-2xl will-change-transform [transform:translate3d(0,0,0)]"
         animate={{ x: [0, 8, 0], y: [0, -7, 0] }}
         transition={{ duration: 7.4, repeat: Infinity, ease: "easeInOut" }}
       >
@@ -190,7 +192,7 @@ export function MarketingHeroVisual() {
       </motion.div>
 
       <motion.div
-        className="absolute left-[38%] top-[6%] overflow-hidden rounded-full border border-[rgba(180,220,215,0.18)] bg-[linear-gradient(to_bottom_right,rgba(140,232,215,0.18),rgba(24,60,62,0.4)_60%,rgba(8,22,26,0.58))] px-3 py-1.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-[color:color-mix(in_srgb,var(--teal)_72%,white_28%)] shadow-[0_18px_34px_-18px_rgba(6,40,42,0.7)] backdrop-blur-2xl"
+        className="absolute left-[38%] top-[6%] overflow-hidden rounded-full border border-[rgba(180,220,215,0.18)] bg-[linear-gradient(to_bottom_right,rgba(140,232,215,0.18),rgba(24,60,62,0.4)_60%,rgba(8,22,26,0.58))] px-3 py-1.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-[color:color-mix(in_srgb,var(--teal)_72%,white_28%)] shadow-[0_18px_34px_-18px_rgba(6,40,42,0.7)] backdrop-blur-2xl will-change-transform [transform:translate3d(0,0,0)]"
         animate={{ x: [0, -7, 0], y: [0, 8, 0] }}
         transition={{ duration: 8.4, repeat: Infinity, ease: "easeInOut" }}
       >
@@ -199,7 +201,7 @@ export function MarketingHeroVisual() {
             {[0, 1, 2].map((i) => (
               <motion.span
                 key={i}
-                className="inline-block h-1.5 w-1.5 rounded-full bg-[color:color-mix(in_srgb,var(--teal)_78%,white_22%)]"
+                className="inline-block h-1.5 w-1.5 rounded-full bg-[color:color-mix(in_srgb,var(--teal)_78%,white_22%)] will-change-opacity"
                 animate={{ opacity: [0.3, 1, 0.3], y: [0, -2.5, 0] }}
                 transition={{
                   duration: 1.2,
@@ -214,7 +216,7 @@ export function MarketingHeroVisual() {
       </motion.div>
 
       <motion.div
-        className="absolute bottom-[8%] left-1/2 -translate-x-1/2 rounded-[1.35rem] border-x-0 border-t border-b border-t-[color:rgb(89_104_109)] border-b-[color:rgb(16_23_27)] bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.15),transparent_40%),linear-gradient(to_bottom_right,rgba(108,126,132,0.2)_0%,rgba(24,35,40,0.78)_52%,rgba(9,14,17,0.92)_100%)] p-4 shadow-[0_28px_58px_-18px_rgba(2,8,10,0.56),0_54px_140px_-38px_rgba(4,12,15,0.76)] backdrop-blur-xl"
+        className="absolute bottom-[8%] left-1/2 -translate-x-1/2 rounded-[1.35rem] border-x-0 border-t border-b border-t-[color:rgb(89_104_109)] border-b-[color:rgb(16_23_27)] bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.15),transparent_40%),linear-gradient(to_bottom_right,rgba(108,126,132,0.2)_0%,rgba(24,35,40,0.78)_52%,rgba(9,14,17,0.92)_100%)] p-4 shadow-[0_28px_58px_-18px_rgba(2,8,10,0.56),0_54px_140px_-38px_rgba(4,12,15,0.76)] backdrop-blur-xl will-change-transform [transform:translate3d(-50%,0,0)]"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 10.4, repeat: Infinity, ease: "easeInOut" }}
       >
@@ -224,7 +226,7 @@ export function MarketingHeroVisual() {
           </span>
           <span>Deployment</span>
         </div>
-        <div className="mt-1.5 pl-7 text-[15px] font-semibold leading-none text-[var(--foreground)]">fanout acknowledged in 38ms</div>
+        <div className="mt-1.5 pl-7 text-[15px] font-semibold leading-none text-[var(--foreground)]">{`fanout acknowledged in 38ms`}</div>
       </motion.div>
     </div>
   );

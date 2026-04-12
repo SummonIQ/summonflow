@@ -19,12 +19,12 @@ const badgeClass =
 
 export default function MarketingHome() {
   return (
-    <main className="page-shell min-h-screen">
+    <main className="page-shell min-h-screen pt-64">
       <div className="grid-lines absolute inset-0 opacity-40" />
 
       <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col px-6 pb-20 pt-24 sm:px-10">
         {/* Hero */}
-        <section className="relative pb-8 pt-0 lg:min-h-[calc(100svh-5.5rem)] lg:pb-12 lg:pt-0">
+        <section className="relative pb-8 pt-32 lg:min-h-[calc(100svh-5.5rem)] lg:pb-12 lg:pt-40">
           <div className="relative z-10 grid items-start gap-14 lg:min-h-[calc(100svh-10rem)] lg:grid-cols-[minmax(0,0.92fr)_minmax(25rem,0.88fr)]">
             <div className="fade-up relative max-w-3xl pt-0 pb-1">
               <div className={badgeClass}>
