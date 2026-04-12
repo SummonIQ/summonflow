@@ -74,7 +74,7 @@ export function MarketingHeroVisual() {
               }}
               initial={{ opacity: 0, scale: 1 }}
               animate={{
-                scale: [1, 36],
+                scale: [1, 48],
                 opacity: [0, 0.16, 0.07, 0.015, 0],
               }}
               transition={{
