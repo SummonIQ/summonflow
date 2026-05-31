@@ -1,0 +1,31 @@
+{
+  "name": "@summoniq/summonflow-server-redis",
+  "version": "0.1.0",
+  "description": "Redis pubsub adapter for @summoniq/summonflow-server-node.",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist", "README.md", "LICENSE"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "redis": "^5.8.2",
+    "@summoniq/summonflow-server-node": "file:../server-node"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3"
+  }
+}

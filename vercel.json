@@ -1,0 +1,5 @@
+{
+  "installCommand": "bun install --frozen-lockfile",
+  "buildCommand": "NEXT_TELEMETRY_DISABLED=1 bun run build",
+  "framework": "nextjs"
+}

@@ -1,0 +1,49 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - paragraph [ref=e6]: SummonFlow sample
+          - heading "Realtime integration console" [level=1] [ref=e7]
+          - paragraph [ref=e8]: This page connects with the SummonFlow client SDK, signs a presence channel through a Next.js route, publishes through a server route, and renders the event delivered over the websocket.
+        - generic [ref=e11]:
+          - paragraph [ref=e12]: Connection
+          - paragraph [ref=e13]: initialized
+      - generic [ref=e14]:
+        - generic [ref=e15]:
+          - generic [ref=e16]:
+            - generic [ref=e17]:
+              - generic [ref=e18]: Presence channel
+              - textbox "Presence channel" [ref=e19]: presence-sample-room
+            - button "Subscribe" [ref=e20] [cursor=pointer]
+          - generic [ref=e21]:
+            - generic [ref=e22]:
+              - generic [ref=e23]: Message payload
+              - textbox "Message payload" [ref=e24]: Hello from the SummonFlow sample
+            - button "Publish" [disabled] [ref=e25]
+          - generic [ref=e26]:
+            - generic [ref=e27]:
+              - paragraph [ref=e28]: Active channel
+              - strong [ref=e29]: presence-sample-room
+            - generic [ref=e30]:
+              - paragraph [ref=e31]: Presence members
+              - strong [ref=e32]: "0"
+            - generic [ref=e33]:
+              - paragraph [ref=e34]: Auth route
+              - strong [ref=e35]: /api/realtime/auth
+        - complementary [ref=e36]:
+          - paragraph [ref=e37]: Runtime target
+          - code [ref=e38]: ws://127.0.0.1:6001/app/summonflow-integration-sample-local
+          - generic [ref=e39]:
+            - paragraph [ref=e40]: Use the default local server for a smoke test.
+            - paragraph [ref=e41]: "Set `.env.local` to point the same UI at a hosted SummonFlow realtime service."
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - paragraph [ref=e45]: Event log
+            - heading "Round-trip proof" [level=2] [ref=e46]
+          - button "Clear" [ref=e47] [cursor=pointer]
+        - generic [ref=e49]: Waiting for connection and channel events.
+  - button "Open Next.js Dev Tools" [ref=e55] [cursor=pointer]:
+    - img [ref=e56]
+  - alert [ref=e59]

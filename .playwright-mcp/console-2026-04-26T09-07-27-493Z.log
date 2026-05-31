@@ -1,0 +1,19 @@
+[  926279ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:30330/_next/static/chunks/0icx_next_dist_0jz0n9i._.js:2431
+[  926420ms] [LOG] [Fast Refresh] done in 217ms @ http://localhost:30330/_next/static/chunks/0icx_next_dist_0jz0n9i._.js:2431
+[ 1098767ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:30330/_next/static/chunks/0icx_next_dist_0jz0n9i._.js:2431
+[ 1098808ms] [LOG] [Fast Refresh] done in 32ms @ http://localhost:30330/_next/static/chunks/0icx_next_dist_0jz0n9i._.js:2431
+[ 1169235ms] [ERROR] WebSocket connection to 'ws://127.0.0.1:6001/app/summonflow-integration-sample-local?protocol=7&client=summon-flow&version=0.1.0&flash=false' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:30330/_next/static/chunks/_0shhfgm._.js:339
+[ 1169235ms] [ERROR] WebSocket connection to 'ws://localhost:30330/_next/webpack-hmr?id=Vzz_d_9o_4HFW1PCTmhxq' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:30330/_next/static/chunks/0icx_next_dist_client_0x2tfrn._.js:13299
+[ 1170245ms] [ERROR] WebSocket connection to 'ws://localhost:30330/_next/webpack-hmr?id=Vzz_d_9o_4HFW1PCTmhxq' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:30330/_next/static/chunks/0icx_next_dist_client_0x2tfrn._.js:13299
+[ 1171242ms] [ERROR] WebSocket connection to 'ws://127.0.0.1:6001/app/summonflow-integration-sample-local?protocol=7&client=summon-flow&version=0.1.0&flash=false' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:30330/_next/static/chunks/_0shhfgm._.js:339
+[ 1171250ms] [ERROR] WebSocket connection to 'ws://localhost:30330/_next/webpack-hmr?id=Vzz_d_9o_4HFW1PCTmhxq' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:30330/_next/static/chunks/0icx_next_dist_client_0x2tfrn._.js:13299
+[ 1172251ms] [ERROR] WebSocket connection to 'ws://localhost:30330/_next/webpack-hmr?id=Vzz_d_9o_4HFW1PCTmhxq' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:30330/_next/static/chunks/0icx_next_dist_client_0x2tfrn._.js:13299
+[ 1173253ms] [ERROR] WebSocket connection to 'ws://localhost:30330/_next/webpack-hmr?id=Vzz_d_9o_4HFW1PCTmhxq' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:30330/_next/static/chunks/0icx_next_dist_client_0x2tfrn._.js:13299
+[ 1178258ms] [LOG] [HMR] connected @ http://localhost:30330/_next/static/chunks/0icx_next_dist_0jz0n9i._.js:2431
+[ 1178456ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:30330/_next/static/chunks/0icx_next_dist_0jz0n9i._.js:2431
+[ 1178463ms] [LOG] [HMR] connected @ http://localhost:30330/_next/static/chunks/0icx_next_dist_0jz0n9i._.js:2431
+[ 1178485ms] TypeError: Failed to execute 'fetch' on 'Window': Illegal invocation
+    at _SummonFlow.authorizeSubscription (http://localhost:30330/_next/static/chunks/_0shhfgm._.js:520:37)
+    at _SummonFlow.subscribeChannel (http://localhost:30330/_next/static/chunks/_0shhfgm._.js:422:46)
+    at _SummonFlow.handleMessage (http://localhost:30330/_next/static/chunks/_0shhfgm._.js:458:39)
+    at WebSocket.<anonymous> (http://localhost:30330/_next/static/chunks/_0shhfgm._.js:347:23)

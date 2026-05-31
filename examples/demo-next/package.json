@@ -1,0 +1,25 @@
+{
+  "name": "summonflow-demo-next",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@summoniq/summonflow-client-sdk": "file:../../packages/client-sdk",
+    "@summoniq/summonflow-server-sdk": "file:../../packages/server-sdk",
+    "@upstash/redis": "^1.35.6",
+    "next": "16.2.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "typescript": "^5.9.3"
+  }
+}

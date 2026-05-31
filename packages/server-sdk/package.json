@@ -1,0 +1,44 @@
+{
+  "name": "@summoniq/summonflow-server-sdk",
+  "version": "0.1.1",
+  "description": "Server-side auth signing and publish helpers for SummonFlow-compatible realtime servers.",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist", "README.md", "LICENSE"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "summonflow",
+    "server-sdk",
+    "auth",
+    "realtime",
+    "publish",
+    "summoniq"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@upstash/redis": "^1.35.6"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3"
+  }
+}

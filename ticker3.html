@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Realtime Objects — Skeuomorphic Set</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg: #071017;
+      --bg2: #0b1520;
+      --steel-1: #596673;
+      --steel-2: #2c353e;
+      --steel-3: #141a20;
+      --cyan: #7ef5f2;
+      --green: #93ff9f;
+      --amber: #ffd27a;
+      --red: #ff6b7c;
+      --violet: #ccb0ff;
+      --glass: rgba(255,255,255,.08);
+      --shadow: 0 20px 44px rgba(0,0,0,.34);
+      --label: rgba(188,255,255,.72);
+      --muted: rgba(220,239,243,.62);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: #eefcfc;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(66,237,218,.12), transparent 24%),
+        radial-gradient(circle at 84% 16%, rgba(111,165,255,.10), transparent 22%),
+        radial-gradient(circle at 58% 80%, rgba(125,255,190,.08), transparent 20%),
+        linear-gradient(180deg, #071017 0%, #09131b 100%);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(117,255,244,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(117,255,244,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      opacity: .42;
+    }
+
+    .wrap {
+      max-width: 1540px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--label);
+    }
+
+    .muted { color: var(--muted); }
+
+    .board {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 30px;
+      align-items: start;
+    }
+
+    .object {
+      position: relative;
+      animation: drift 7s ease-in-out infinite;
+      filter: drop-shadow(0 18px 34px rgba(0,0,0,.26));
+    }
+    .object:nth-child(2n) { animation-duration: 8.1s; }
+    .object:nth-child(3n) { animation-duration: 6.4s; }
+    @keyframes drift {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    .metal {
+      background: linear-gradient(180deg, var(--steel-1) 0%, var(--steel-2) 30%, #171e25 68%, var(--steel-3) 100%);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow:
+        inset 0 2px 0 rgba(255,255,255,.12),
+        inset 0 -2px 0 rgba(0,0,0,.46),
+        inset 2px 0 0 rgba(255,255,255,.04),
+        inset -2px 0 0 rgba(0,0,0,.28),
+        var(--shadow);
+    }
+
+    .screen {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.05), inset 0 -10px 28px rgba(0,0,0,.22);
+    }
+
+    .screen::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255,255,255,.11), transparent 16%, transparent 72%, rgba(255,255,255,.04));
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .live-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: var(--red);
+      box-shadow: 0 0 14px rgba(255,107,124,.95);
+      animation: pulse 1.7s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.16); opacity: .72; }
+    }
+
+    .flicker { animation: flicker 5.2s linear infinite; }
+    @keyframes flicker {
+      0%,100% { opacity: 1; }
+      10% { opacity: .972; }
+      11% { opacity: 1; }
+      49% { opacity: .976; }
+      50% { opacity: 1; }
+      85% { opacity: .982; }
+      86% { opacity: 1; }
+    }
+
+    .ticker-window { overflow: hidden; }
+    .ticker-track {
+      display: flex;
+      gap: 28px;
+      width: max-content;
+      white-space: nowrap;
+      animation: marquee 18s linear infinite;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .led-text {
+      font-family: "Courier New", monospace;
+      letter-spacing: .12em;
+      text-shadow: 0 0 12px currentColor, 0 0 26px currentColor;
+    }
+
+    .seg {
+      font-family: "Courier New", monospace;
+      letter-spacing: .12em;
+      text-shadow: 0 0 10px currentColor;
+    }
+
+    .typing span {
+      width: 10px;
+      height: 10px;
+      display: inline-block;
+      border-radius: 999px;
+      background: rgba(126,245,242,.95);
+      box-shadow: 0 0 12px rgba(126,245,242,.4);
+      animation: dots 1.2s infinite ease-in-out;
+    }
+    .typing span:nth-child(2) { animation-delay: .16s; }
+    .typing span:nth-child(3) { animation-delay: .32s; }
+    @keyframes dots {
+      0%,80%,100% { transform: translateY(0) scale(.86); opacity: .42; }
+      40% { transform: translateY(-6px) scale(1); opacity: 1; }
+    }
+
+    .flip-shell {
+      background: linear-gradient(180deg, #3a2e1d 0%, #1b140b 100%);
+      border: 1px solid rgba(255,219,168,.15);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.05), inset 0 -4px 10px rgba(0,0,0,.34), var(--shadow);
+    }
+    .flip-cell {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, #242424 0%, #0f0f0f 100%);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 12px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04), inset 0 -5px 12px rgba(0,0,0,.32);
+      height: 58px;
+    }
+    .flip-cell::before {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; top: 50%;
+      height: 1px;
+      background: rgba(255,255,255,.12);
+      z-index: 2;
+    }
+    .flip-stack {
+      position: absolute;
+      inset: 0;
+      animation: flipWords 8s infinite;
+    }
+    .flip-line {
+      height: 58px;
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      font-family: "Courier New", monospace;
+      font-size: 18px;
+      letter-spacing: .16em;
+      color: #ffe8b6;
+      text-shadow: 0 1px 0 rgba(255,255,255,.05), 0 -1px 0 rgba(0,0,0,.4);
+    }
+    @keyframes flipWords {
+      0%,20% { transform: translateY(0); }
+      25%,45% { transform: translateY(-58px); }
+      50%,70% { transform: translateY(-116px); }
+      75%,95% { transform: translateY(-174px); }
+      100% { transform: translateY(0); }
+    }
+
+    .radar {
+      position: relative;
+      width: 182px;
+      height: 182px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at center, rgba(126,245,242,.09) 0 18%, transparent 19%),
+        radial-gradient(circle at center, rgba(126,245,242,.06) 0 36%, transparent 37%),
+        radial-gradient(circle at center, rgba(126,245,242,.04) 0 54%, transparent 55%),
+        linear-gradient(180deg, rgba(2,10,14,.95), rgba(2,10,14,.98));
+      border: 1px solid rgba(126,245,242,.18);
+      box-shadow: inset 0 0 30px rgba(126,245,242,.08), 0 0 35px rgba(126,245,242,.08);
+      overflow: hidden;
+    }
+    .radar::before {
+      content: "";
+      position: absolute;
+      inset: -12%;
+      background: conic-gradient(from 40deg, transparent 0deg, rgba(126,245,242,.30) 28deg, transparent 44deg);
+      animation: radarSweep 3.8s linear infinite;
+    }
+    .radar::after {
+      content: "";
+      position: absolute;
+      left: 50%; top: 50%;
+      width: 10px; height: 10px;
+      transform: translate(-50%, -50%);
+      border-radius: 999px;
+      background: var(--cyan);
+      box-shadow: 0 0 16px rgba(126,245,242,.8);
+    }
+    @keyframes radarSweep { to { transform: rotate(360deg); } }
+    .ping {
+      position: absolute;
+      left: 50%; top: 50%;
+      border-radius: 999px;
+      border: 1px solid rgba(126,245,242,.26);
+      transform: translate(-50%, -50%) scale(.25);
+      animation: ping 2.8s ease-out infinite;
+    }
+    .ping:nth-child(2) { animation-delay: .7s; }
+    .ping:nth-child(3) { animation-delay: 1.4s; }
+    @keyframes ping {
+      0% { width: 24px; height: 24px; opacity: .78; }
+      100% { width: 150px; height: 150px; opacity: 0; }
+    }
+
+    .crt {
+      position: relative;
+      background: radial-gradient(circle at 50% 15%, rgba(135,255,182,.12), transparent 30%), linear-gradient(180deg, rgba(5,20,14,.96), rgba(2,10,8,.98));
+      border-radius: 24px / 18px;
+    }
+    .crt::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(180deg, rgba(255,255,255,.025) 0 1px, transparent 1px 4px);
+      opacity: .18;
+      pointer-events: none;
+    }
+    .crt::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; top: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(143,255,196,.8), transparent);
+      box-shadow: 0 0 20px rgba(143,255,196,.55);
+      animation: scan 2.8s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes scan {
+      0%,100% { transform: translateY(6px); opacity: .18; }
+      50% { transform: translateY(122px); opacity: .95; }
+    }
+
+    .bars {
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      gap: 10px;
+      height: 150px;
+    }
+    .bars span {
+      width: 8px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(192,255,250,1), rgba(84,226,214,.36));
+      box-shadow: 0 0 12px rgba(126,245,242,.26);
+      animation: level 1.15s infinite ease-in-out;
+      position: relative;
+    }
+    .bars span::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(180deg, rgba(255,255,255,.16), transparent 35%);
+    }
+    .bars span:nth-child(2) { animation-delay: .08s; }
+    .bars span:nth-child(3) { animation-delay: .16s; }
+    .bars span:nth-child(4) { animation-delay: .24s; }
+    .bars span:nth-child(5) { animation-delay: .32s; }
+    .bars span:nth-child(6) { animation-delay: .40s; }
+    .bars span:nth-child(7) { animation-delay: .48s; }
+    @keyframes level {
+      0%,100% { height: 18px; opacity: .46; }
+      50% { height: 56px; opacity: 1; }
+    }
+
+    .vu-needle {
+      transform-origin: 90px 78px;
+      animation: needle 1.5s ease-in-out infinite;
+    }
+    @keyframes needle {
+      0%,100% { transform: rotate(-30deg); }
+      25% { transform: rotate(-4deg); }
+      60% { transform: rotate(22deg); }
+      75% { transform: rotate(10deg); }
+    }
+
+    .reel {
+      position: relative;
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      border: 2px solid rgba(255,255,255,.11);
+      background: radial-gradient(circle at center, rgba(255,255,255,.18) 0 3px, transparent 4px), radial-gradient(circle at center, rgba(255,255,255,.08) 0 14px, transparent 15px), rgba(255,255,255,.03);
+      animation: spin 3s linear infinite;
+    }
+    .reel::after {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .digit {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      background: linear-gradient(180deg, #050607, #171a1d 55%, #090a0b);
+      border: 1px solid rgba(255,255,255,.06);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.03), inset 0 -4px 10px rgba(0,0,0,.3);
+      height: 72px;
+      display: grid;
+      place-items: center;
+      font-family: "Courier New", monospace;
+      font-size: 38px;
+      color: #f6f6f6;
+      animation: digitBump 3.8s ease-in-out infinite;
+    }
+    .digit::before {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; top: 50%;
+      height: 1px;
+      background: rgba(255,255,255,.09);
+    }
+    .digit:nth-child(2) { animation-delay: .08s; }
+    .digit:nth-child(3) { animation-delay: .16s; }
+    .digit:nth-child(4) { animation-delay: .24s; }
+    @keyframes digitBump {
+      0%,100% { transform: translateY(0); }
+      8% { transform: translateY(-2px); }
+      12% { transform: translateY(0); }
+      52% { transform: translateY(-3px); }
+      56% { transform: translateY(0); }
+    }
+
+    .screw {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #a7b2bc, #4f5b65 70%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.22), inset 0 -1px 0 rgba(0,0,0,.35);
+    }
+
+    .radio-knob {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #77828d, #34404b);
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.18), inset 0 -1px 0 rgba(0,0,0,.38);
+    }
+
+    .blip {
+      animation: blip 1.4s steps(2,start) infinite;
+    }
+    @keyframes blip { 50% { opacity: .45; } }
+
+    .rolling-text {
+      display: inline-block;
+      animation: nudge 3.8s ease-in-out infinite;
+    }
+    @keyframes nudge {
+      0%,100% { transform: translateY(0); }
+      20% { transform: translateY(-1px); }
+      24% { transform: translateY(0); }
+      64% { transform: translateY(-1px); }
+      68% { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+      <div>
+        <div class="eyebrow mb-3">Realtime objects</div>
+        <h1 class="max-w-4xl text-4xl font-semibold tracking-tight md:text-6xl">Yes. More objects, and more actually skeuomorphic.</h1>
+        <p class="mt-4 max-w-3xl text-base text-slate-300 md:text-lg">This version adds more variety and pushes the materials harder: more hardware, more instrument faces, more smoked displays, more real-world framing, and subtle motion on every piece.</p>
+      </div>
+      <div class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.24em] text-cyan-100/75">expanded set</div>
+    </div>
+
+    <section class="board">
+      <div class="object col-span-12 lg:col-span-5">
+        <div class="mb-3 flex items-center gap-3 px-2"><div class="eyebrow">Stock ticker</div><div class="muted text-sm">market tape housing</div></div>
+        <div class="metal rounded-[22px] p-3">
+          <div class="screen flicker rounded-[14px] bg-[#07110d] px-4 py-4">
+            <div class="ticker-window">
+              <div class="ticker-track text-2xl font-semibold text-emerald-100">
+                <span>AAPL 198.42 <span class="text-emerald-300">+1.12%</span></span><span class="text-emerald-400/60">•</span>
+                <span>NVDA 941.88 <span class="text-emerald-300">+2.43%</span></span><span class="text-emerald-400/60">•</span>
+                <span>TSLA 174.09 <span class="text-red-300">-0.82%</span></span><span class="text-emerald-400/60">•</span>
+                <span>BTC 68,402 <span class="text-emerald-300">+3.18%</span></span><span class="text-emerald-400/60">•</span>
+                <span>AAPL 198.42 <span class="text-emerald-300">+1.12%</span></span><span class="text-emerald-400/60">•</span>
+                <span>NVDA 941.88 <span class="text-emerald-300">+2.43%</span></span><span class="text-emerald-400/60">•</span>
+                <span>TSLA 174.09 <span class="text-red-300">-0.82%</span></span><span class="text-emerald-400/60">•</span>
+                <span>BTC 68,402 <span class="text-emerald-300">+3.18%</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="object col-span-12 md:col-span-6 lg:col-span-3">
+        <div class="mb-3 flex items-center gap-3 px-2"><div class="eyebrow">Broadcast sign</div><div class="muted text-sm">studio lightbox</div></div>
+        <div class="rounded-[22px] bg-[linear-gradient(180deg,#4c5863_0%,#262f38_30%,#151b22_100%)] p-3 shadow-[var(--shadow)] border border-white/10">
+          <div class="relative overflow-hidden rounded-[16px] border border-red-200/10 bg-[linear-gradient(180deg,rgba(90,8,14,.95),rgba(46,5,9,.98))] px-6 py-6 shadow-[inset_0_0_28px_rgba(255,80,80,.16),inset_0_1px_0_rgba(255,255,255,.06)]">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,.08),transparent_34%)]"></div>
+            <div class="relative flex items-center justify-between"><div class="flex items-center gap-3 text-red-100"><div class="live-dot"></div><div class="text-3xl font-semibold tracking-[0.24em]">ON AIR</div></div><div class="led-text text-sm text-red-200/80">REC</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="object col-span-12 md:col-span-6 lg:col-span-4">
+        <div class="mb-3 flex items-center gap-3 px-2"><div class="eyebrow">News crawl</div><div class="muted text-sm">TV lower-third</div></div>
+        <div class="overflow-hidden rounded-[18px] border border-cyan-100/12 bg-[#09131b] shadow-[0_18px_45px_rgba(0,0,0,.33),inset_0_1px_0_rgba(255,255,255,.06)]">
+          <div class="flex items-center gap-3 border-b border-cyan-100/10 bg-cyan-300/10 px-4 py-3"><div class="live-dot" style="width:10px;height:10px"></div><div class="text-xs font-semibold uppercase tracking-[0.28em] text-cyan-100/90">Breaking news</div></div>
+          <div class="ticker-window px-4 py-4 flicker"><div class="ticker-track text-lg font-medium uppercase tracking-[0.08em] text-cyan-50/90"><span>Storm warning issued for coastal counties</span><span class="text-cyan-300/60">/</span><span>Train service resumes after signal fault</span><span class="text-cyan-300/60">/</span><span>Markets close higher as chip stocks rally</span><span class="text-cyan-300/60">/</span><span>Storm warning issued for coastal counties</span><span class="text-cyan-300/60">/</span><span>Train service resumes after signal fault</span><span class="text-cyan-300/60">/</span><span>Markets close higher as chip stocks rally</span></div></div>
+        </div>
+      </div>
+
+      <div class="object col-span-12 md:col-span-6 lg:col-span-4">
+        <div class="mb-3 flex items-center gap-3 px-2"><div class="eyebrow">Typing bubble</div><div class="muted text-sm">incoming message</div></div>
+        <div class="rounded-[999px] border border-cyan-100/12 bg-[linear-gradient(180deg,rgba(9,27,33,.96),rgba(3,15,20,.98))] px-6 py-5 shadow-[var(--shadow),inset_0_1px_0_rgba(255,255,255,.05)]">
+          <div class="flex items-center justify-between gap-8"><span class="text-3xl font-medium text-cyan-100/92">typing</span><div class="typing flex items-center gap-2"><span></span><span></span><span></span></div></div>
+        </div>
+      </div>
+
+      <div class="object col-span-12 md:col-span-6 lg:col-span-5">
+        <div class="mb-3 flex items-center gap-3 px-2"><div class="eyebrow">Split-flap board</div><div class="muted text-sm">airport departures</div></div>
+        <div class="flip-shell rounded-[24px] p-4">
+          <div class="mb-3 grid grid-cols-[1fr_auto] items-center gap-2 px-1 text-[11px] uppercase tracking-[0.22em] text-amber-100/55"><span>Departures</span><span>12:40</span></div>
+          <div class="grid grid-cols-[76px_1fr_130px] gap-2"><div class="flip-cell"><div class="flip-line">BA217</div></div><div class="flip-cell"><div class="flip-line">LONDON</div></div><div class="flip-cell"><div class="flip-stack"><div class="flip-line">BOARDING</div><div class="flip-line">FINAL CALL</div><div class="flip-line">DELAYED</div><div class="flip-line">DEPARTED</div></div></div></div>
+        </div>
+      </div>
+
+      <div class="object col-span-12 md:col-span-6 lg:col-span-3">
+        <div class="mb-3 flex items-center gap-3 px-2"><div class="eyebrow">LED clock</div><div class="muted text-sm">smoked display</div></div>
+        <div class="rounded-[30px] bg-[linear-gradient(180deg,#2b3138,#12171c)] p-4 border border-white/10 shadow-[var(--shadow)]">
+          <div class="rounded-[18px] border border-cyan-100/8 bg-[linear-gradient(180deg,rgba(4,17,22,.98),rgba(3,10,14,.99))] px-5 py-6 text-center shadow-[inset_0_1px_0_rgba(255,255,255,.04),inset_0_0_30px_rgba(126,245,242,.05)] flicker"><div class="mb-2 text-[10px] uppercase tracking-[0.28em] text-cyan-200/42">updated now</div><div class="led-text text-4xl text-cyan-200">08:41:19</div></div>
+        </div>
+      </div>
+
+      <div class="object col-span-12 md:col-span-6 lg:col-span-4">
+        <div class="mb-3 flex items-center gap-3 px-2"><div class="eyebrow">Scoreboard strip</div><div class="muted text-sm">stadium panel</div></div>
+        <div class="metal rounded-[18px] p-3">
+          <div class="screen rounded-[12px] bg-[linear-gradient(180deg,#110c16,#07060a)] px-4 py-4">
+            <div class="mb-2 flex items-center justify-between text-[10px] uppercase tracking-[0.24em] text-violet-100/55"><span>Final / live</span><span class="blip">in play</span></div>
+            <div class="seg flex items-center justify-between text-2xl text-violet-100"><span>ARS 2</span><span class="text-violet-300">—</span><span>1 CHE</span><span class="text-sm text-violet-200/70">87'</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="object col-span-12 md:col-span-6 lg:col-span-4">
+        <div class="mb-3 flex items-center gap-3 px-2"><div class="eyebrow">Pager alert</div><div class="muted text-sm">dispatch device</div></div>
+        <div class="rounded-[24px] border border-amber-100/12 bg-[linear-gradient(180deg,#57421f,#24190b)] p-4 shadow-[var(--shadow)]">
+          <div class="mb-3 flex items-center justify-between text-[10px] uppercase tracking-[0.24em] text-amber-100/55"><span>Priority page</span><span>911</span></div>
+          <div class="rounded-xl border border-amber-100/10 bg-black/35 px-4 py-4 font-mono text-lg text-amber-100 shadow-[inset_0_1px_0_rgba(255,255,255,.03)] flicker rolling-text">CALL BACK NOW</div>
+          <div class="mt-4 flex items-center justify-between"><div class="h-2 w-16 rounded-full bg-black/25"></div><div class="live-dot" style="width:8px;height:8px"></div></div>
+        </div>
+      </div>
+
+      <div class="object col-span-12 md:col-span-6 lg:col-span-4">
+        <div class="mb-3 flex items-center gap-3 px-2"><div class="eyebrow">Radar scope</div><div class="muted text-sm">tracking screen</div></div>
+        <div class="rounded-[28px] bg-[linear-gradient(180deg,#38444e,#171d24)] p-5 border border-white/10 shadow-[var(--shadow)]">
+          <div class="mx-auto grid place-items-center rounded-[24px] border border-cyan-100/10 bg-[linear-gradient(180deg,rgba(4,17,20,.96),rgba(1,8,11,.99))] py-5"><div class="radar"><div class="ping"></div><div class="ping"></div><div class="ping"></div></div></div>
+        </div>
+      </div>
+
+      <div class="object col-span-12 md:col-span-6 lg:col-span-4">
+        <div class="mb-3 flex items-center gap-3 px-2"><div class="eyebrow">Security monitor</div><div class="muted text-sm">CRT CCTV feed</div></div>
+        <div class="relative rounded-[34px] border border-white/10 bg-[linear-gradient(180deg,#3e4852,#171d24)] p-4 shadow-[var(--shadow)]">
+          <div class="absolute left-4 top-4 flex gap-2"><div class="screw"></div><div class="screw"></div></div><div class="absolute right-4 top-4 flex gap-2"><div class="screw"></div><div class="screw"></div></div><div class="absolute left-4 bottom-4 flex gap-2"><div class="screw"></div><div class="screw"></div></div><div class="absolute right-4 bottom-4 flex gap-2"><div class="screw"></div><div class="screw"></div></div>
+          <div class="crt screen flicker px-4 py-4"><div class="mb-3 flex items-center justify-between text-[10px] uppercase tracking-[0.24em] text-emerald-100/55"><span>CAM 04</span><span>REC</span></div><div class="h-[118px] rounded-xl border border-emerald-100/10 bg-black/25"></div><div class="mt-3 flex items-center justify-between text-sm text-emerald-100/80"><span>Motion detected</span><span>00:03:17</span></div></div>
+        </div>
+      </div>
+
+      <div class="object col-span-12 md:col-span-6 lg:col-span-4">
+        <div class="mb-3 flex items-center gap-3 px-2"><div class="eyebrow">VU meter</div><div class="muted text-sm">analog instrument</div></div>
+        <div class="rounded-[22px] border border-amber-100/12 bg-[linear-gradient(180deg,#4b412c,#241b10)] p-4 shadow-[var(--shadow)]">
+          <div class="rounded-[16px] border border-amber-100/10 bg-[linear-gradient(180deg,rgba(35,29,17,.96),rgba(18,15,9,.99))] px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,.05)]">
+            <svg viewBox="0 0 180 104" class="w-full"><path d="M18 78 A72 72 0 0 1 162 78" fill="none" stroke="rgba(255,222,160,.25)" stroke-width="8" stroke-linecap="round"/><path d="M18 78 A72 72 0 0 1 162 78" fill="none" stroke="rgba(255,240,210,.07)" stroke-width="2" stroke-linecap="round"/><g class="vu-needle"><line x1="90" y1="78" x2="122" y2="30" stroke="rgba(255,238,200,.92)" stroke-width="3" stroke-linecap="round"/><circle cx="90" cy="78" r="6" fill="rgba(255,238,200,.95)"/></g></svg>
+            <div class="mt-2 flex items-center justify-between text-xs uppercase tracking-[0.22em] text-amber-100/50"><span>-20</span><span>-10</span><span>0</span><span>+3</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="object col-span-12 md:col-span-6 lg:col-span-4">
+        <div class="mb-3 flex items-center gap-3 px-2"><div class="eyebrow">Radio transceiver</div><div class="muted text-sm">dispatch console</div></div>
+        <div class="metal rounded-[24px] p-4">
+          <div class="mb-3 flex items-center justify-between"><div class="flex gap-2"><div class="radio-knob"></div><div class="radio-knob"></div></div><div class="text-[10px] uppercase tracking-[0.24em] text-cyan-100/55">channel 3</div></div>
+          <div class="screen rounded-[14px] bg-[linear-gradient(180deg,#08161b,#02080a)] px-4 py-4 text-cyan-100"><div class="mb-2 text-[10px] uppercase tracking-[0.24em] text-cyan-200/48">receiving</div><div class="seg text-2xl">154.400 <span class="text-cyan-300">MHz</span></div></div>
+          <div class="mt-4 flex items-end gap-2"><div class="h-7 w-3 rounded-full bg-slate-500/60"></div><div class="h-10 w-3 rounded-full bg-slate-500/70"></div><div class="h-5 w-3 rounded-full bg-slate-500/50"></div></div>
+        </div>
+      </div>
+
+      <div class="object col-span-12 md:col-span-6 lg:col-span-4">
+        <div class="mb-3 flex items-center gap-3 px-2"><div class="eyebrow">Cassette reels</div><div class="muted text-sm">tape running</div></div>
+        <div class="rounded-[22px] border border-white/10 bg-[linear-gradient(180deg,#252525,#0d0d0d)] p-5 shadow-[var(--shadow)]">
+          <div class="mb-3 flex items-center justify-between text-[10px] uppercase tracking-[0.24em] text-slate-400"><span>Recording</span><span class="text-red-300">● rec</span></div>
+          <div class="rounded-2xl border border-white/5 bg-black/35 px-5 py-5"><div class="flex items-center gap-4"><div class="reel"></div><div class="h-[2px] flex-1 bg-gradient-to-r from-slate-500/60 via-slate-200/50 to-slate-500/60"></div><div class="reel" style="animation-direction:reverse"></div></div></div>
+        </div>
+      </div>
+
+      <div class="object col-span-12 md:col-span-6 lg:col-span-4">
+        <div class="mb-3 flex items-center gap-3 px-2"><div class="eyebrow">Signal bars</div><div class="muted text-sm">broadcast equalizer</div></div>
+        <div class="rounded-[28px] border border-cyan-100/12 bg-[linear-gradient(180deg,#314048,#131a20)] p-5 shadow-[var(--shadow)]">
+          <div class="rounded-[18px] border border-cyan-100/10 bg-[linear-gradient(180deg,rgba(5,18,22,.96),rgba(3,11,13,.99))] px-6 py-6"><div class="bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+        </div>
+      </div>
+
+      <div class="object col-span-12 md:col-span-6 lg:col-span-4">
+        <div class="mb-3 flex items-center gap-3 px-2"><div class="eyebrow">Tally counter</div><div class="muted text-sm">mechanical odometer</div></div>
+        <div class="rounded-[22px] border border-white/10 bg-[linear-gradient(180deg,#2f353b,#14181c)] p-4 shadow-[var(--shadow)]">
+          <div class="mb-3 text-[10px] uppercase tracking-[0.24em] text-slate-400">Visitors now</div>
+          <div class="grid grid-cols-4 gap-2"><div class="digit">0</div><div class="digit">1</div><div class="digit">2</div><div class="digit">8</div></div>
+        </div>
+      </div>
+
+      <div class="object col-span-12 md:col-span-6 lg:col-span-4">
+        <div class="mb-3 flex items-center gap-3 px-2"><div class="eyebrow">Stopwatch</div><div class="muted text-sm">elapsed time</div></div>
+        <div class="rounded-[999px] border border-slate-100/12 bg-[linear-gradient(180deg,#434c56,#1d242b)] px-6 py-5 shadow-[var(--shadow)]">
+          <div class="text-center"><div class="mb-2 text-[10px] uppercase tracking-[0.24em] text-slate-300/55">live duration</div><div class="seg text-3xl text-slate-100">00:42:18</div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,21 @@
+name = "summon-stream-cloudflare"
+main = "worker.ts"
+compatibility_date = "2026-04-04"
+
+[observability]
+enabled = true
+
+[[durable_objects.bindings]]
+name = "SUMMON_STREAM_HUB"
+class_name = "SummonStreamHub"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["SummonStreamHub"]
+
+[vars]
+SUMMON_STREAM_APP_KEY = "summon-stream-live"
+SUMMON_STREAM_AUTH_PATH = "/realtime/auth"
+SUMMON_STREAM_WS_PATH = "/app"
+SUMMON_STREAM_PUBLISH_PATH = "/apps/summon-stream-live/events"
+SUMMON_STREAM_ACTIVITY_TIMEOUT_SECONDS = "120"

@@ -1,0 +1,22 @@
+{
+  "name": "summonflow-demo-node",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsup",
+    "start": "node dist/index.cjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@summoniq/summonflow-server-node": "file:../../packages/server-node",
+    "@summoniq/summonflow-server-redis": "file:../../packages/server-redis",
+    "redis": "^5.8.3",
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "@types/ws": "^8.18.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3"
+  }
+}

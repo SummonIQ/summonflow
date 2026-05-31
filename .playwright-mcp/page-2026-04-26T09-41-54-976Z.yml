@@ -1,0 +1,42 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e6]:
+      - link "SummonFlow" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e16]: SummonFlow
+      - navigation [ref=e17]:
+        - link "Features" [ref=e18] [cursor=pointer]:
+          - /url: /features
+        - link "Pricing" [ref=e19] [cursor=pointer]:
+          - /url: /pricing
+        - link "Changelog" [ref=e20] [cursor=pointer]:
+          - /url: /changelog
+        - link "Docs" [ref=e21] [cursor=pointer]:
+          - /url: /docs
+        - link "Help" [ref=e22] [cursor=pointer]:
+          - /url: /help
+      - generic [ref=e23]:
+        - generic [ref=e24]:
+          - button "Switch to light mode" [ref=e25]:
+            - img [ref=e27]
+          - link "Open the public SummonFlow repository on GitHub" [ref=e29] [cursor=pointer]:
+            - /url: https://github.com/SummonIQ/summon-flow
+            - img [ref=e30]
+        - link "Get Started" [ref=e34] [cursor=pointer]:
+          - /url: /signup
+  - contentinfo [ref=e36]:
+    - generic [ref=e37]:
+      - generic [ref=e38]:
+        - generic [ref=e47]: SummonFlow
+        - generic [ref=e48]: Open source realtime infrastructure.
+      - generic [ref=e49]:
+        - link "Features" [ref=e50] [cursor=pointer]:
+          - /url: /features
+        - link "Pricing" [ref=e51] [cursor=pointer]:
+          - /url: /pricing
+        - link "Docs" [ref=e52] [cursor=pointer]:
+          - /url: /docs
+        - link "Changelog" [ref=e53] [cursor=pointer]:
+          - /url: /changelog
+        - link "Help" [ref=e54] [cursor=pointer]:
+          - /url: /help
